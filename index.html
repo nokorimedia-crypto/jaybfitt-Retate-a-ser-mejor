@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaybfitt | Reto 30 Días</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-accent: #ff007f; /* Magenta vibrante */
+            --secondary-accent: #00f0ff; /* Cian eléctrico */
+            --bg-dark: #12001a; /* Púrpura muy oscuro */
+            --glass: rgba(255, 255, 255, 0.08);
+            --text-light: #f0f0f0;
+            --text-muted: #b0b0b0;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo de degradado y animaciones */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(145deg, #1f002d 0%, #0a0014 100%);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .background-image-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1549476466-932f94b15975?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Mujer haciendo ejercicio */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15; /* Sutil overlay */
+            filter: grayscale(100%) brightness(50%);
+            z-index: -1;
+        }
+        /* Puedes cambiar la imagen de fondo:
+           - Hombre entrenando: https://images.unsplash.com/photo-1574680096145-d05b4742ab9a
+           - Grupo: https://images.unsplash.com/photo-1552674605-db6ffd4dfc80
+        */
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative; /* Asegura que el contenido esté sobre el fondo */
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0 30px;
+        }
+
+        .brand-name {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .slogan {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -5px;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-accent);
+            border-radius: 5px;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .highlight-text {
+            color: var(--secondary-accent);
+            font-weight: 700;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        ul li::before {
+            content: '👉'; /* Puedes cambiar el emoji */
+            position: absolute;
+            left: 0;
+            color: var(--primary-accent);
+            font-size: 1.2em;
+        }
+
+        .price-tag {
+            background: linear-gradient(45deg, var(--primary-accent), var(--secondary-accent));
+            color: var(--bg-dark);
+            font-size: 1.8rem;
+            font-weight: 900;
+            padding: 15px 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px auto;
+            width: fit-content;
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.3);
+        }
+
+        /* Botones */
+        .cta-group {
+            position: sticky;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 50px;
+            z-index: 100;
+        }
+
+        .btn {
+            padding: 18px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            box-shadow: 0 10px 25px rgba(220, 39, 67, 0.2);
+        }
+        .btn:active { transform: scale(0.96); }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 100px;
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .disclaimer span {
+            color: var(--primary-accent);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="background-image-overlay"></div>
+
+<div class="container">
+    <header>
+        <h1 class="brand-name">Jaybfitt</h1>
+        <div class="slogan">RETO 30 DÍAS</div>
+        <p class="intro-text">
+            Esto NO es un programa de transformación. Es una fase de activación y diagnóstico. Ideal si necesitas <span class="highlight-text">activarte, ordenarte y saber qué necesitas</span> después.
+        </p>
+    </header>
+
+    <section class="card">
+        <h2 class="section-title">¿PARA QUIÉN ES?</h2>
+        <p><span class="highlight-text">✔</span> Personas que quieren retomar o empezar a entrenar.</p>
+        <p><span class="highlight-text">✔</span> Personas sin estructura o que quieren probar.</p>
+        <p class="disclaimer"><span>❌</span> No para quien busca resultados mágicos o no sigue indicaciones.</p>
+    </section>
+
+    <section class="card">
+        <h2 class="section-title">QUÉ LOGRARÁS</h2>
+        <ul>
+            <li>Entrenar con constancia</li>
+            <li>Recuperar ritmo físico</li>
+            <li>Entender tus límites actuales</li>
+            <li>Tener claridad sobre tu siguiente paso</li>
+        </ul>
+        <p class="disclaimer">📌 El reto <span class="highlight-text">no te transforma. Te revela.</span></p>
+    </section>
+
+    <section class="card">
+        <h2 class="section-title">QUÉ INCLUYE</h2>
+        <ul>
+            <li>Rutina estructurada de 30 días (simple y progresiva)</li>
+            <li>Guía nutricional básica (qué sí / qué no / porciones)</li>
+            <li>Checklist semanal de hábitos</li>
+            <li>Acceso a grupo de acompañamiento</li>
+            <li>Diagnóstico final personalizado</li>
+        </ul>
+        <p class="disclaimer">📌 No incluye ajustes individuales ni seguimiento uno a uno.</p>
+    </section>
+
+    <section class="card">
+        <h2 class="section-title">CÓMO FUNCIONA</h2>
+        <p>1️⃣ Empiezas el reto</p>
+        <p>2️⃣ Sigues la estructura</p>
+        <p>3️⃣ Completas los 30 días</p>
+        <p>4️⃣ Realizas el diagnóstico final</p>
+        <p class="disclaimer">📌 Con base en eso se te asigna el nivel correcto para continuar.</p>
+    </section>
+
+    <section class="card">
+        <h2 class="section-title">RELACIÓN CON LOS NIVELES</h2>
+        <p>Este reto <span class="highlight-text">NO reemplaza ningún nivel</span>, funciona como:</p>
+        <ul>
+            <li>Prueba de compromiso</li>
+            <li>Fase de activación</li>
+        </ul>
+        <p class="disclaimer">La mayoría de quienes completan el reto y continúan, pasan a Nivel 1.</p>
+    </section>
+
+    <div class="price-tag">
+        💵 USD 60
+    </div>
+
+    <div class="cta-group">
+        <a href="https://wa.me/50762182220?text=RETO" class="btn btn-whatsapp">
+            📲 QUIERO EMPEZAR EL RETO
+        </a>
+        <a href="https://instagram.com/jaybfitt" target="_blank" class="btn btn-instagram">
+            📸 SÍGUEME EN INSTAGRAM
+        </a>
+    </div>
+
+    <footer>
+        &copy; 2026 Jaybfitt &bull; Es para quien está listo para hacerse cargo.
+    </footer>
+</div>
+
+</body>
+</html>
